@@ -8,7 +8,7 @@ jobs:
     steps:
       - task: SonarCloudPrepare@1  
         inputs:
-          SonarCloud: "<insert name of the SonarCloud service connection you created in step 2>"
+          SonarCloud: "<Objetivec>"
           organization: "sonarsource-cfamily-examples"
           scannerMode: "CLI"
           configMode: "manual"
