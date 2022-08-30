@@ -22,14 +22,13 @@ jobs:
         workingDirectory: .
         displayName: Build in build-wrapper
       - task: SonarCloudAnalyze@1
-- task: CoverageConverter@0
-  inputs:
-    searchFolderForTestFiles: '$(System.DefaultWorkingDirectory)'
-    vsTestExeFileLocation: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe'
-    vsTestArgs: '/EnableCodeCoverage'
-    listTestFiles: '**\bin\**\*.Tests*.dll'
-    searchFolderForCodeCoverageFile: '$(System.DefaultWorkingDirectory)'
-    temporaryFolderForCodeCoverage: 'Agent.TempDirectory'
-    temporaryFileCoveragexml: '\TestResults\DynamicCodeCoverage.coveragexml'
-    codeCoverageArgs: 'analyze /output:'
-    codeCoverageExeFileLocation: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Team Tools\Dynamic Code Coverage Tools\CodeCoverage.exe'
+      - task: reportgenerator@5
+        inputs:
+          reports: 'coverage.xml'
+          targetdir: 'coveragereport'
+          sourcedirs: 'C:\Users\breinerpacheco\agent\_work\_temp'
+      -task: PublishCodeCoverageResults@1
+       inputs:
+codeCoverageTool: 'Cobertura'
+    summaryFileLocation: 'C:\Users\breinerpacheco\agent\_work\_temp\Cobertura.xml'
+    pathToSources: 'C:\Users\breinerpacheco\agent\_work\_temp'
