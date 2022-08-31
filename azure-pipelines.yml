@@ -15,7 +15,7 @@ jobs:
       extraProperties: |
         sonar.cfamily.vscoveragexml.reportsPath=$(System.DefaultWorkingDirectory)/CoverageResults/*/*.xml
   - powershell: |
-      curl --create-dirs -sSLo ${C}\Users\breinerpacheco\.sonar\build-wrapper-win-x86.zip ${{variables.BUILD_WRAPPER_DOWNLOAD_URL}}
+      curl --create-dirs  ${C}\Users\breinerpacheco\.sonar\build-wrapper-win-x86.zip ${{variables.BUILD_WRAPPER_DOWNLOAD_URL}}
       unzip -o ${C}\Users\breinerpacheco\.sonar\build-wrapper-win-x86.zip -d ${C}\Users\breinerpacheco\.sonar\
     displayName: Download and install build wrapper
   - powershell: |
